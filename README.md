@@ -6,7 +6,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/rs-debezium-engine.svg)](https://crates.io/crates/rs-debezium-engine)
 [![PyPI](https://img.shields.io/pypi/v/rs-debezium-engine.svg)](https://pypi.org/project/rs-debezium-engine/)
-[![CI](https://github.com/nousresearch/rs-debezium-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/nousresearch/rs-debezium-engine/actions)
+[![CI](https://github.com/dwickyfp/rs-debezium-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/dwickyfp/rs-debezium-engine/actions)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Crates.io Downloads](https://img.shields.io/crates/d/rs-debezium-engine.svg)](https://crates.io/crates/rs-debezium-engine)
 
@@ -198,7 +198,7 @@ Or install from the git repository:
 
 ```toml
 [dependencies]
-rs-debezium-engine = { git = "https://github.com/nousresearch/rs-debezium-engine.git" }
+rs-debezium-engine = { git = "https://github.com/dwickyfp/rs-debezium-engine.git" }
 ```
 
 ### Python (pip)
@@ -213,7 +213,7 @@ Or install from source using [maturin](https://www.maturin.rs/):
 
 ```bash
 # Clone the repository
-git clone https://github.com/nousresearch/rs-debezium-engine.git
+git clone https://github.com/dwickyfp/rs-debezium-engine.git
 cd rs-debezium-engine
 
 # Create a virtual environment
@@ -547,6 +547,6 @@ limitations under the License.
 
 **Built with 🦀 Rust + 🐍 Python + ☕ Java**
 
-[Report Bug](https://github.com/nousresearch/rs-debezium-engine/issues) • [Request Feature](https://github.com/nousresearch/rs-debezium-engine/issues) • [Documentation](https://docs.rs/rs-debezium-engine)
+[Report Bug](https://github.com/dwickyfp/rs-debezium-engine/issues) • [Request Feature](https://github.com/dwickyfp/rs-debezium-engine/issues) • [Documentation](https://docs.rs/rs-debezium-engine)
 
 </div>
