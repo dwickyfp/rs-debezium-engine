@@ -1,0 +1,79 @@
+# CI pipeline for rs-debezium-engine
+# Runs Rust tests, Python feature checks, and Python binding tests
+# on both Ubuntu and macOS.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Toolchains ────────────────────────────────────────────
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ── Caching ───────────────────────────────────────────────
+      - name: Cache cargo registry & build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      # ── Debezium JARs ────────────────────────────────────────
+      - name: Download Debezium JARs
+        run: |
+          chmod +x scripts/download-debezium.sh
+          ./scripts/download-debezium.sh
+
+      # ── Rust tests ────────────────────────────────────────────
+      - name: Run cargo test
+        run: cargo test
+
+      # ── Python feature check ─────────────────────────────────
+      - name: Check Python feature compilation
+        run: cargo check --features python
+
+      # ── Python binding build ──────────────────────────────────
+      - name: Install maturin and build Python wheel
+        run: |
+          pip install maturin pytest
+          maturin develop --features python
+
+      # ── Python tests ──────────────────────────────────────────
+      - name: Run Python tests
+        run: python -m pytest tests/python/ -v

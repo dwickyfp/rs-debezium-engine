@@ -1,0 +1,38 @@
+[build-system]
+requires = ["maturin>=1.5,<2"]
+build-backend = "maturin"
+
+[project]
+name = "rs-debezium-engine"
+version = "0.1.0"
+description = "Embedded Debezium CDC engine for Python — Rust-powered drop-in replacement for pydbzengine"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.9"
+authors = [
+    { name = "Dwicky Feriansyah Putra", email = "feri.dfp@gmail.com" },
+]
+keywords = ["cdc", "debezium", "data-engineering", "replication", "rust"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Rust",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://github.com/dwickyfp/rs-debezium-engine"
+Repository = "https://github.com/dwickyfp/rs-debezium-engine"
+
+[tool.maturin]
+features = ["python"]
+module-name = "rs_debezium_engine"
+strip = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+python_files = ["test_*.py"]

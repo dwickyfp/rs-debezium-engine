@@ -1,0 +1,11 @@
+/target
+debezium-libs/
+debezium-offset.dat
+debezium-offset.dat.*
+*.jar
+.venv/
+*.whl
+*.egg-info/
+__pycache__/
+.pytest_cache/
+java-classes/
