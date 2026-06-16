@@ -52,7 +52,7 @@ It wraps the Java Debezium Embedded Engine through a JNI bridge, exposing clean 
 │                           │  JNI (Java Native Interface)    │
 │                           ▼                                 │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │                  JVM (JDK 11+)                        │   │
+│  │                  JVM (JDK 17+)                        │   │
 │  │                                                      │   │
 │  │   RsChangeConsumer.java                               │   │
 │  │         │                                             │   │
